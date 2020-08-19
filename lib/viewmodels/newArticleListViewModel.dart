@@ -11,8 +11,6 @@ class NewsListViewModel extends ChangeNotifier {
     populateHeadlines();
   }
 
-
-
   Future<void> populateHeadlines() async {
     List<NewsArticle> article = await WebService().fetchTopHeadlines();
 
