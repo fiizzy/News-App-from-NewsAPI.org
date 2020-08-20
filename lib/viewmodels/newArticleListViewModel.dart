@@ -17,6 +17,6 @@ class NewsListViewModel extends ChangeNotifier {
     this.articles = article
         .map((article) => NewsArticleViewModel(article: article))
         .toList();
-    notifyListeners();
+    notifyListeners(); 
   }
 }

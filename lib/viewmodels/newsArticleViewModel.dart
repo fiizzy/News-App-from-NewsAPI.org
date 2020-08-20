@@ -14,7 +14,7 @@ class NewsArticleViewModel {
   }
 
   String get imageURL {
-    return null;
+    return _newsArticle.urlToImage;
   }
 
   String get url {
