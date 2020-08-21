@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       )
     );
   }
-}
+}   
 
 // b3b0fa951ae9463eb9399fb39a782e13
 // https://newsapi.org/v2/top-headlines?country=us&apiKey=b3b0fa951ae9463eb9399fb39a782e13

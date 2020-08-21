@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/newsArticleModel.dart';
 import 'package:news_app/viewmodels/newArticleListViewModel.dart';
 import 'package:provider/provider.dart';
 
@@ -17,12 +18,18 @@ class _NewsListState extends State<NewsList> {
   Widget build(BuildContext context) {
     final vm = Provider.of<NewsListViewModel>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("News Healine"),
-      ),
+      appBar: AppBar(title: Text("News Healine"), actions: <Widget>[
+        // action button
+        IconButton(
+          icon: Icon(Icons.shopping_basket),
+          onPressed: () {
+            
+          },
+        ),
+      ]),
       body: ListView.builder(
         // separatorBuilder: (BuildContext context, int index) => Divider( height: 0, color: Colors.black87),
-        itemExtent: 120,
+        itemExtent: 130,
         itemCount: vm.articles.length,
         itemBuilder: (BuildContext context, int index) {
           var articles = vm.articles;
@@ -31,10 +38,10 @@ class _NewsListState extends State<NewsList> {
               : new Image.network(articles[index].imageURL);
 
           return Card(
-            // margin: EdgeInsets.symmetric(vertical: 10.0),
+            margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
             child: ListTile(
-              contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-              
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
               leading: Container(
                 child: image,
                 height: 100,
