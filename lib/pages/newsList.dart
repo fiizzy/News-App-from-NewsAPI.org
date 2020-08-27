@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/newsArticleModel.dart';
 import 'package:news_app/viewmodels/newArticleListViewModel.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +14,7 @@ class _NewsListState extends State<NewsList> {
     Provider.of<NewsListViewModel>(context, listen: false);
   }
 
+
   Widget build(BuildContext context) {
     final vm = Provider.of<NewsListViewModel>(context);
     return Scaffold(
@@ -22,9 +22,7 @@ class _NewsListState extends State<NewsList> {
         // action button
         IconButton(
           icon: Icon(Icons.shopping_basket),
-          onPressed: () {
-            
-          },
+          onPressed: () {},
         ),
       ]),
       body: ListView.builder(
@@ -36,7 +34,7 @@ class _NewsListState extends State<NewsList> {
           var image = articles[index].imageURL == null
               ? Image.asset("images/news-placeholder.png")
               : new Image.network(articles[index].imageURL);
-
+          
           return Card(
             margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5.0),
             child: ListTile(
