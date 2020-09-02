@@ -19,6 +19,24 @@ class NewsListViewModel extends ChangeNotifier {
         .toList();
     notifyListeners();
 
-    print(article);
   }
 }
+
+// class NewsListViewModelSearch extends ChangeNotifier {
+//   List<NewsArticleViewModel> articles = List<NewsArticleViewModel>();
+
+//   NewsListViewModelSearch() {
+//     populateHeadlinesSearch();
+//   }
+
+//   Future<void> populateHeadlinesSearch() async {
+//     List<NewsArticle> article = await WebService().fetchTopHeadlinesBbyKeywords('keyword');
+
+//     this.articles = article
+//         .map((article) => NewsArticleViewModel(article: article))
+//         .toList();
+//     notifyListeners();
+//     print(article);
+//   }
+// }
+
