@@ -17,20 +17,33 @@ class _NewsListState extends State<NewsList> {
   void initState() {
     super.initState();
     Provider.of<NewsListViewModel>(context, listen: false);
+    Provider.of<NewsListViewModel>(context, listen: false).populateHeadlines();
   }
 
-  // WebService showSearch = new WebService();
-  // List<NewsArticleViewModel> searchSerivce = List<NewsArticleViewModel>();
+  // ignore: missing_return
+  Widget _buildList(NewsListViewModel vm) {
+    switch (vm.loadingStatus) {
+      case LoadingStatus.searching:
+        return Center(child: CircularProgressIndicator());
+        break;
+      case LoadingStatus.empty:
+        return Center(child: Text('No result found'));
+      case LoadingStatus.completed:
+        return Container(child: NewsListView(articles: vm.articles));
+    }
+  }
 
   Widget build(BuildContext context) {
     final vm = Provider.of<NewsListViewModel>(context);
+
     return Scaffold(
         appBar: AppBar(title: Text("News Healine"), actions: <Widget>[
           // action button
           IconButton(
-            icon: Icon(Icons.shopping_basket),
+            icon: Icon(Icons.refresh),
             onPressed: () {
-               vm.populateHeadlines();
+              vm.populateHeadlines();
+              _controller.clear();
             },
           ),
         ]),
@@ -41,7 +54,7 @@ class _NewsListState extends State<NewsList> {
               child: Form(
                   child: TextFormField(
                 // ignore: missing_return
-                onFieldSubmitted: (value){
+                onFieldSubmitted: (value) {
                   if (value.isNotEmpty) {
                     vm.populateHeadlinesSearch(value);
                   }
@@ -58,7 +71,7 @@ class _NewsListState extends State<NewsList> {
                     )),
               )),
             ),
-            Expanded(child: NewsListView(articles: vm.articles))
+            Expanded(child: _buildList(vm))
           ],
         ));
   }

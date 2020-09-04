@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/models/newsArticleModel.dart';
-import 'package:news_app/models/newsArticleModel.dart';
-import 'package:news_app/viewmodels/newArticleListViewModel.dart';
 import 'package:news_app/viewmodels/newsArticleViewModel.dart';
 
 // ignore: must_be_immutable
