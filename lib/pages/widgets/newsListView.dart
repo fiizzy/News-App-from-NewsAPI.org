@@ -9,6 +9,7 @@ class NewsListView extends StatelessWidget {
   List<NewsArticleViewModel> articles;
 
   NewsListView({this.articles});
+  
 
   @override
   Widget build(BuildContext context) {
